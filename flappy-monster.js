@@ -31,7 +31,7 @@ switch (game.currentState) {
       game.drawInitialScreen();
       break;
 case GAME_PLAYING:
-      // DRAW GAME PLAYING SCREEN
+      // DRAW GAME PLAYING SCREEN 
       game.drawGamePlayingScreen();
       break;
 case GAME_OVER:
