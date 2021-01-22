@@ -7,4 +7,4 @@
 <br>
 <a href = "ball.html"> ball </a>
 <br> 
-<a href = "indexFM.html"> Flappy Monster </a>
+<a href = "FlappyMonster.html"> Flappy Monster </a>
