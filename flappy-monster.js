@@ -1,9 +1,12 @@
 var INITIAL = 1;
 var GAME_PLAYING = 2;
 var GAME_OVER = 3;
+
+
 var KEY_CODE = {
   R: 82
 };
+
 function FlappyMonster(canvas) {
   // Base
   var game = this;
@@ -14,6 +17,10 @@ function FlappyMonster(canvas) {
 
   // Game State
   game.currentState = INITIAL;
+  
+  // Game Speed
+  game.velocity = 5;
+
 
     // Bind Events
   game.bindEvents();
@@ -22,13 +29,24 @@ function FlappyMonster(canvas) {
   game.createObjects();
   
 }
+
 FlappyMonster.prototype.createObjects = function() {
   // Base
   var game = this;
 
-game.background = new GameBackground('back.png', game.canvas);
+  game.background1 = new GameBackground('images/back.png', game.canvas);
+  game.background2 = new GameBackground('images/back.png', game.canvas);
+  game.background2.x = game.canvas.width;
+
+    // Score
+  game.gameScore = new GameScore(game.canvas);
+  game.gameScore.x = game.canvas.width - 150;
+  game.gameScore.y = 80;
   
 };
+
+
+
 FlappyMonster.prototype.bindEvents = function() {
   // Base
   var game = this;
@@ -58,34 +76,44 @@ FlappyMonster.prototype.bindEvents = function() {
   });
 };
 
-FlappyMonster.prototype.start = function() {
 
-// Base
+
+
+
+
+FlappyMonster.prototype.start = function() {
+   // Base
   var game = this;
- // Start Game
+  
+  // Start Game
   window.requestAnimationFrame(function() {
     game.runGameLoop();
   });
-
 };
+
 FlappyMonster.prototype.runGameLoop = function() {
-// Base
+  
+  // Base
   var game = this;
-switch (game.currentState) {
+  
+ switch (game.currentState) {
     case INITIAL:
       // DRAW INITIAL SCREEN
       game.drawInitialScreen();
       break;
-case GAME_PLAYING:
-      // DRAW GAME PLAYING SCREEN 
+    case GAME_PLAYING:
+      // DRAW GAME PLAYING SCREEN
       game.drawGamePlayingScreen();
       break;
-case GAME_OVER:
+    case GAME_OVER:
       // DRAW GAME OVER SCREEN
       game.drawGameOverScreen();
       break;
+  }
+   window.requestAnimationFrame(function() {
+    game.runGameLoop();
+  });
 
-});
 };
 FlappyMonster.prototype.drawInitialScreen = function() {
   // Base
@@ -100,15 +128,42 @@ FlappyMonster.prototype.drawInitialScreen = function() {
   game.context.fillStyle = 'white';
   game.context.font = '36px Arial';
   game.context.fillText('Click to Start', game.canvas.width / 2 - 100, game.canvas.height / 2);
-};
+}
 FlappyMonster.prototype.drawGamePlayingScreen = function() {
-   // Base
+  // Base
   var game = this;
-  // Draw
 
-  // Background
-    game.background.draw();
+  // Clear Canvas
+  game.context.clearRect(0, 0, game.canvas.width, game.canvas.height);
+
+  // Draw Background
+  game.animateBackground();
   };
+// Draw Score
+  game.gameScore.draw();
+
+
+FlappyMonster.prototype.animateBackground = function() {
+  // Base
+  var game = this;
+
+  // Background 1
+  game.background1.draw();
+
+  if(Math.abs(game.background1.x) > game.canvas.width){
+    game.background1.x = game.canvas.width - game.velocity;
+  }
+  game.background1.x = game.background1.x - game.velocity;
+
+  // Background 2
+  game.background2.draw();
+
+  if(Math.abs(game.background2.x) > game.canvas.width){
+    game.background2.x = game.canvas.width - game.velocity;
+  }
+  game.background2.x = game.background2.x - game.velocity;
+};
+
 FlappyMonster.prototype.drawGameOverScreen = function() {
   // Base
   var game = this;
@@ -125,4 +180,3 @@ FlappyMonster.prototype.drawGameOverScreen = function() {
   game.context.font = '24px Arial';
   game.context.fillText('Press R to Restart!', game.canvas.width / 2 - 100, game.canvas.height / 2 + 50);
 };
-
