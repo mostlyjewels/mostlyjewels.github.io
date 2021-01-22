@@ -37,3 +37,4 @@ GameBackground.prototype.draw = function() {
     bg.context.drawImage(bg.img, bg.x, bg.y, bg.w, bg.h);
   }
 };
+ 
