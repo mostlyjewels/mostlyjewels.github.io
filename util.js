@@ -31,25 +31,3 @@ window.getRandomColor = function() {
   var blue = getRandomInt(0, 257);
   return 'rgb('+ red + ', ' + green + ', ' + blue  +')';
 };
-
-
-Announcement: "<!DOCTYPE html> <html> <head> <meta…"
-M Teichman
-Created 10:43 AM10:43 AM
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  <title>Flappy Monster Game Project</title>
-  <link href="css/style.css" rel="stylesheet" />
-</head>
-<body>
-
-  <canvas id="flappy-monster-game" width="900" height="600"></canvas>
-
-  <script src="js/util.js"></script>
-  <script src="js/canvas-script.js"></script>
-
-
-</body>
-</html>
