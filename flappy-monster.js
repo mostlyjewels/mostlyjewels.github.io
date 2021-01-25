@@ -138,11 +138,11 @@ FlappyMonster.prototype.drawGamePlayingScreen = function() {
 
   // Draw Background
   game.animateBackground();
-  };
+ 
 // Draw Score
   game.gameScore.draw();
 
-
+};
 FlappyMonster.prototype.animateBackground = function() {
   // Base
   var game = this;
