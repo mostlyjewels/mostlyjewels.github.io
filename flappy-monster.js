@@ -43,6 +43,11 @@ FlappyMonster.prototype.createObjects = function() {
   game.gameScore.x = game.canvas.width - 150;
   game.gameScore.y = 80;
   
+  // Wall Factory
+  game.wallFactory = new WallFactory(game.canvas);
+  game.wallFactory.generateWalls();
+
+  
 };
 
 
