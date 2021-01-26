@@ -153,6 +153,22 @@ FlappyMonster.prototype.drawGamePlayingScreen = function() {
   console.log(game.wallFactory.walls);
 
 };
+FlappyMonster.prototype.drawGameOverScreen = function() {
+  // Base
+  var game = this;
+  // Draw
+
+  // Background
+  game.context.fillStyle = 'black';
+  game.context.fillRect(0, 0, game.canvas.width, game.canvas.height);
+
+  // Text
+  game.context.fillStyle = 'white';
+  game.context.font = '36px Arial';
+  game.context.fillText('Game Over :(', game.canvas.width / 2 - 100, game.canvas.height / 2);
+  game.context.font = '24px Arial';
+  game.context.fillText('Press R to Restart!', game.canvas.width / 2 - 100, game.canvas.height / 2 + 50);
+};
 FlappyMonster.prototype.drawWalls = function() {
   // Base
   var game = this;
@@ -204,19 +220,4 @@ FlappyMonster.prototype.animateBackground = function() {
   game.background2.x = game.background2.x - game.velocity;
 };
 
-FlappyMonster.prototype.drawGameOverScreen = function() {
-  // Base
-  var game = this;
-  // Draw
 
-  // Background
-  game.context.fillStyle = 'black';
-  game.context.fillRect(0, 0, game.canvas.width, game.canvas.height);
-
-  // Text
-  game.context.fillStyle = 'white';
-  game.context.font = '36px Arial';
-  game.context.fillText('Game Over :(', game.canvas.width / 2 - 100, game.canvas.height / 2);
-  game.context.font = '24px Arial';
-  game.context.fillText('Press R to Restart!', game.canvas.width / 2 - 100, game.canvas.height / 2 + 50);
-};
