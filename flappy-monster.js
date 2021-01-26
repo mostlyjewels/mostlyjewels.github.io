@@ -146,8 +146,43 @@ FlappyMonster.prototype.drawGamePlayingScreen = function() {
  
 // Draw Score
   game.gameScore.draw();
+  
+// Draw Walls
+  game.drawWalls();
+
+  console.log(game.wallFactory.walls);
 
 };
+FlappyMonster.prototype.drawWalls = function() {
+  // Base
+  var game = this;
+
+  // Draw Walls
+  var walls = game.wallFactory.walls;
+
+  for(var i = 0; i < walls.length; i++){
+    walls[i].draw();
+    walls[i].x = walls[i].x - game.velocity;
+  }
+game.removeExtraWalls();
+
+};
+FlappyMonster.prototype.removeExtraWalls = function() {
+  // Base
+  var game = this;
+
+  // Draw Walls
+  var walls = game.wallFactory.walls;
+
+  for(var i = 0; i < walls.length; i++){
+    if(walls[i].x + walls[i].w < 0){
+      // remove
+      walls.shift();
+    }
+  }
+};
+
+
 FlappyMonster.prototype.animateBackground = function() {
   // Base
   var game = this;
