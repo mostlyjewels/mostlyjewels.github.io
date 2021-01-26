@@ -33,4 +33,3 @@ window.getRandomColor = function() {
   var blue = getRandomInt(0, 257);
   return 'rgb('+ red + ', ' + green + ', ' + blue  +')';
 };
-© 2021 GitHub, Inc.
