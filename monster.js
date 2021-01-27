@@ -42,6 +42,11 @@ Monster.prototype.draw = function() {
     monster.frame++;
     monster.frame %= 4;
   }
+  else if(monster.y < 0){
+       monster.y = 0;
+       monster.vy = 0;
+     } 
+
 };
 
 
