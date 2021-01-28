@@ -78,7 +78,7 @@ FlappyMonster.prototype.bindEvents = function() {
       case GAME_OVER:
         if(event.keyCode === KEY_CODE.R){
           console.log(event.keyCode);
-                   game.reset();
+          game.reset();
           game.currentState = GAME_PLAYING;
         }
         break;
