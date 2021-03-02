@@ -175,10 +175,8 @@ FlappyMonster.prototype.checkCollisions = function() {
 var walls = game.wallFactory.walls;
 
   for(var i = 0; i < walls.length; i++){
-    
     if(game.isCollided(game.monster, walls[i])){
       game.currentState = GAME_OVER;
-    }
   }
 };
        FlappyMonster.prototype.isCollided = function(monster, wall) {
